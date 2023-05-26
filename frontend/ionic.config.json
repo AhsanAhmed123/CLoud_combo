@@ -1,0 +1,8 @@
+{
+  "name": "Cloud Combo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "52f24b65"
+}

@@ -1,0 +1,243 @@
+ion-toolbar {
+    --background: none;
+}
+
+.file-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.file-name {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    margin-top: 10px;
+    color: #000000;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.file-name-folder {
+    font-weight: 500;
+    font-size: 14px;
+    color: #151D48;
+}
+
+.file-size {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 14px;
+    color: #737791;
+}
+
+.page-content {
+    background-color: #f9f8ff;
+    border-top-right-radius: 35px;
+    border-top-left-radius: 35px;
+    margin-top: 6.5rem !important;
+    width: 100%;
+    max-width: 100%;
+    z-index: 20;
+    padding-top: 16px;
+    overflow-y: auto;
+}
+
+.file-skeleton {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.manager-header {
+    height: 10rem;
+    width: 100%;
+    padding-top: 2.5rem;
+}
+
+.transfer-content {
+    background-color: white;
+    border-radius: 22px;
+    padding: 10px;
+    margin: 20px;
+}
+
+.manager-topbar ion-label {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    padding: 0 2px;
+}
+
+.burger-icon {
+    color: white;
+    font-size: 2rem;
+}
+.burger-btn {
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+.drives-list-heading {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.drives-label {
+    color: #7e7e7e;
+}
+
+.box {
+    width: 6.919rem;
+    height: 8.125rem;
+    border-radius: 1.375rem;
+    margin: 0;
+}
+.box > img {
+    border-radius: 0.625rem;
+}
+
+.sm-box {
+    box-sizing: border-box;
+    width: 3.375rem;
+    height: 4.563rem;
+    border-radius: 0.688rem;
+    margin: 0;
+    display: flex;
+    row-gap: 0.5rem;
+}
+
+.drives-box {
+    border: 0.188rem solid transparent;
+    background-color: white;
+}
+.active-box {
+    border-width: 1px;
+    border-color: var(--app-active);
+}
+.sm-box > img,
+ion-icon {
+    width: 1.875rem;
+    font-size: 1.875rem;
+}
+.sm-box > ion-label {
+    font-size: 0.625rem;
+}
+
+.sm-box ion-label {
+    /*color: red;*/
+}
+
+.square {
+    width: 4.563rem;
+    height: 4.563rem;
+    border-radius: 0.688rem;
+    margin: 0;
+    background: #ececef;
+}
+.square > img {
+    width: 1.25rem;
+    font-size: 1.25rem;
+}
+
+.grd-card {
+    height: 12.875rem;
+    border-radius: 2.375rem;
+}
+.connectBtn {
+    --padding-top: 1.875rem;
+    --padding-bottom: 1.875rem;
+}
+.add-btn {
+    color: #444a6d;
+    border: 1px solid #e8e8ed;
+    background-color: white;
+}
+
+.actual-header {
+    color: white !important;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    max-width: 100%;
+
+}
+
+.file {
+    width: 103px;
+    height: 103px;
+    border: 5px solid transparent;
+    border-radius: 22px;
+    margin: 0 auto;
+}
+
+.file-image-preview {
+    width: 100%;
+    height: 100%;
+    border-radius: 22px;
+    border: 5px solid transparent;
+}
+
+.file-image {
+    border-color: #f9f8ff;
+}
+
+.drives-row {
+    overflow-x: auto;
+}
+
+.dropbox-modal {
+    --height: 30%;
+    --width: 80%;
+    --border-radius: 16px;
+    --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropbox-modal div {
+    justify-content: center;
+    row-gap: 1rem;
+}
+
+.dropbox-modal ion-col.dropbox-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.dropbox-modal ion-label {
+    color: black;
+    font-weight: 600;
+    font-size: 1.25rem !important;
+    align-self: initial !important;
+}
+
+.dropbox-modal ion-input {
+    background-color: #FFFFFF;
+    border-radius: 0.5rem;
+    padding: 0.25rem !important;
+    --color: #7785B2;
+    width: 90%;
+}
+
+.dropbox-modal ion-col.action-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

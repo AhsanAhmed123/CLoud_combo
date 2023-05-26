@@ -1,0 +1,82 @@
+.signupHeader {
+    height: fit-content;
+    background: white;
+}
+
+.signupHeader ion-title {
+    color: black;
+}
+
+.authScreen {
+    --background: linear-gradient(104.23deg, #9D9DFF 13.1%, #7979FC 47.56%);
+}
+
+.content {
+    position: absolute;
+    bottom: 0;
+    padding: 1rem 1.5rem;
+    width: 100%;
+    height: 75vh;
+    max-height: 75vh !important;
+    background-color: #FAFBFF;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+}
+
+.titleWrapper {
+    height: 2rem;
+}
+
+.inputWrapper {
+    margin: 0.5rem 0;
+    --background: none;
+    --border-color: transparent;
+    --padding-start: 0;
+    --padding-end: 0;
+    --inner-padding-end: 0px;
+}
+
+.inputLabel {
+    color: #445177 !important;
+    font-size: 1rem !important;
+}
+
+.submit {
+    --background: linear-gradient(131.45deg, #9C9CFF 0%, #7979FB 53.63%);
+    --color: #FAFBFF;
+    font-size: 1rem;
+    border-radius: 1rem;
+}
+
+.authActionWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.authActionLabel {
+    color: #445177;
+}
+
+.authActionButton {
+    width: 4rem;
+    height: 1.25rem;
+}
+
+.title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1D253D;
+    padding: 1rem 0;
+}
+
+.input {
+    background-color: #FFFFFF;
+    border-radius: 1rem;
+    --color: #7785B2;
+}
+
+.input input {
+    height: 3rem;
+    padding: 0.5rem 1rem !important;
+}

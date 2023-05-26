@@ -1,0 +1,43 @@
+.navigationBarWrapper {
+    --background: #FFFFFF;
+    box-shadow: 0 -10px 40px rgba(33, 87, 137, 0.15);
+    --border: none;
+    --color: #000;
+    height: 5rem;
+}
+
+.menuItemWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 0.5rem;
+}
+
+.navigationLabel {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #444A6D;
+}
+
+.newTransfer {
+    width: 2rem;
+    height: 2.25rem;
+}
+
+.activeTab {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #7979FB;
+}
+
+.navigationIcon {
+    color: #5B73E0;
+}
+
+.hidden {
+    display: none;
+}

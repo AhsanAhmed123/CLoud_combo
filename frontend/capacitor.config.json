@@ -1,0 +1,25 @@
+{
+  "appId": "cloud.combo.app",
+  "appName": "Cloud Combo",
+  "webDir": "build",
+  "bundledWebRuntime": false,
+  "plugins": {
+    "server": {
+      "cleartext": true
+    },
+    "Keyboard": {
+      "resize": "native"
+    },
+    "GoogleAuth": {
+      "scopes": [
+        "https://www.googleapis.com/auth/userinfo.profile",
+        "https://www.googleapis.com/auth/userinfo.email",
+        "https://www.googleapis.com/auth/drive"
+      ],
+      "androidClientId": "1014272967728-678ij3tttv1onmsqg52k2hl64vk7ftd9.apps.googleusercontent.com",
+      "iosClientId": "1014272967728-g4jm0i6gjah51l987blnu9j4gqis0350.apps.googleusercontent.com",
+      "grantOfflineAccess": true,
+      "forceCodeForRefreshToken": true
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.idea
+build
+coverage
+node_modules
+.env
+*.env
+.vscode
+client/dist
+
+config.json
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+/package-lock.json
+
+/log
+*.log
+
+/ios
+/android
+
+/docs/icons/*
+!/docs/icons/*.zip

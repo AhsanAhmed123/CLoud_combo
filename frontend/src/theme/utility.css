@@ -1,0 +1,40 @@
+/* Heigh */
+.h-250{
+    height: 15.625rem;
+}
+.h-150{
+    height: 9.375rem;
+}
+.h-175{
+    height: 10.938rem;
+}
+.h-200{
+    height: 12.5rem;
+}
+
+
+.m-top-250 {
+    margin-top: 15.625rem;
+}
+.m-top-200 {
+    margin-top: 12.5rem;
+}
+.m-top-150 {
+    margin-top: 9.375rem;
+}
+.m-top-180 {
+    margin-top: 11.25rem;
+}
+.m-top-50 {
+    margin-top: 3.125rem;
+}
+
+.m-bottom-250 {
+    margin-bottom: 15.625rem;
+}
+.m-bottom-150 {
+    margin-bottom: 9.375rem;
+}
+.m-bottom-50 {
+    margin-bottom: 3.125rem;
+}

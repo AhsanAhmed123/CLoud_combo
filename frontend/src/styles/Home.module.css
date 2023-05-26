@@ -1,0 +1,256 @@
+.page {
+    background: #F9F8FF;
+    display: flex;
+    justify-content: initial !important;
+    row-gap: 20rem;
+}
+
+.minGap {
+    row-gap: 17rem;
+}
+
+.noGap {
+    row-gap: 15rem;
+}
+
+.header {
+    height: 21vh;
+    padding: 1rem 0;
+    background: linear-gradient(284.93deg, #9D9DFF 11.99%, #7979FC 47.19%);
+    border-radius: 0 0 28px 28px;
+}
+
+.contentWrapper {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.drivesBox {
+    z-index: 20;
+    position: fixed;
+    top: 6rem;
+    right: 0;
+    left: 0;
+    margin: 1rem;
+}
+
+.drives {
+    margin: 1rem 0.5rem;
+    background: white;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 22px;
+}
+
+.comingSoon {
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 2rem;
+    padding: 0.5rem 0.65rem;
+    color: #151D48;
+}
+
+.box {
+    background: #F8F7FF;
+    width: 100%;
+    height: 6rem;
+    border-radius: 1.4rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.5rem;
+}
+
+.emptyWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 1rem;
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    background: white;
+    border-radius: 22px;
+    padding: 0.75rem;
+    justify-content: center;
+}
+
+.emptyHeight {
+    height: 11rem;
+}
+
+.singleDrive {
+    height: 9rem;
+}
+
+.driveWrapper {
+    background-color: #EEF2FE;
+    display: flex;
+    justify-content: center;
+    border-radius: 12px;
+    column-gap: 2rem;
+}
+
+.driveLabel {
+    color: #151D48;
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+
+.dots {
+    width: 1.5rem !important;
+    height: 2rem !important;
+}
+
+.infoWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.driveEmailLabel {
+    font-weight: 400;
+    font-size: 0.9rem;
+    line-height: 18px;
+    color: #737791;
+}
+
+.emailWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 0.75rem;
+}
+
+.empty ion-img {
+    width: 2rem;
+    height: 3rem;
+}
+
+.drive {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.rowWrapper {
+    display: flex;
+    align-items: center;
+    padding: 0 0.25rem;
+}
+
+.premium {
+    width: 4rem;
+    position: absolute;
+    right: 0;
+    bottom: 0.75rem;
+}
+
+.box img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.box ion-label {
+    color: black;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.connect {
+    --background: #755EE4;
+    height: 3rem;
+    border-radius: 12px;
+    margin: 0;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 500;
+    width: 100%;
+    color: #FFFFFF;
+}
+
+.metricLabel {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #737791;
+}
+
+.metricValue {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    text-transform: capitalize;
+    color: #151D48;
+}
+
+.driveRow {
+    height: 3.625rem;
+}
+
+.metricWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 0.25rem;
+}
+
+.middle {
+    display: flex;
+    text-align: center;
+}
+
+.right {
+    text-align: end;
+}
+
+.dropboxModal {
+    --height: 30%;
+    --width: 80%;
+    --border-radius: 16px;
+    --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropboxModal div {
+    justify-content: center;
+    row-gap: 1rem;
+}
+
+.dropboxModal ion-col.dropboxCode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.dropboxModal ion-label {
+    color: black;
+    font-weight: 600;
+    font-size: 1.25rem !important;
+    align-self: initial !important;
+}
+
+.dropboxModal ion-input {
+    background-color: #FFFFFF;
+    border-radius: 0.5rem;
+    padding: 0.25rem !important;
+    --color: #7785B2;
+    width: 90%;
+}
+
+.dropboxModal ion-col.actionButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
