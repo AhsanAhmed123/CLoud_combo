@@ -7,15 +7,19 @@ import { Transfers } from "../models/Transfers";
 import { Drive } from "../models/Drive";
 
 export async function startNewTransfer(req: Request, res: Response) {
+   
     try {
-        debugger;
         const { userId, totalSize, from, to } = req.body;
         const { isWeb } = req.query;
         const transfersQueue = new Queue(process.env.QUEUE_NAME as string, {
             redis: { port: process.env.REDIS_PORT as unknown as number, host: process.env.REDIS_HOST as string },
         });
 
+        // console.log
+
         const job = await transfersQueue.add({ ...req.body, isWeb, });
+
+       
 
         await Transfers.create({
             userId,
@@ -32,6 +36,8 @@ export async function startNewTransfer(req: Request, res: Response) {
             status: 'pending',
         });
 
+       
+
         return res.json({
             success: true,
             message: 'Transfer started',
@@ -39,12 +45,12 @@ export async function startNewTransfer(req: Request, res: Response) {
         });
     } catch (error) {
         console.error('Error:', error);
-        console.error('Error stack trace:', (error as Error)?.stack);
+        console.error('Error stack trace:', (error as Error).stack);
         
         return res.json({
             success: false,
             message: 'Failed to start transfers',
-            error: (error as Error)?.toString(),
+            error: error,
         });
     }
 }
@@ -54,7 +60,9 @@ export async function getFolderFiles(req: Request, res: Response) {
         const { userId, folderId, driveId, isWeb, cloudProvider } = req.query;
         const refreshToken = await getRefreshTokenFromProvider(driveId, userId);
 
-        let files = null;
+        // let files = null;
+        // let files: { files: any };
+        let files: { files: any[] } = { files: [] };
 
         if (cloudProvider === 'dropbox') {
             const { access_token } = await getDropboxAccessToken(refreshToken);

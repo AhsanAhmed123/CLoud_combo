@@ -14,9 +14,14 @@ export async function getTransfers(req: Request, res: Response) {
   try {
     const { userId } = req.query;
 
+    // console.log(userId);
+
     const transfers = await Transfers.find({
       userId,
-    }).sort({ createdAt: -1 });
+    }).sort({ createdAt: -1 }); 
+
+
+    console.log(transfers);
 
     return res.json({
       success: true,
@@ -28,7 +33,7 @@ export async function getTransfers(req: Request, res: Response) {
     return res.json({
       success: false,
       message: "Failed to get transfers",
-      error: error,
+      error: (error as Error).toString(),
     });
   }
 }
