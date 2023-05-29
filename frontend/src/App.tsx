@@ -14,8 +14,6 @@ import { App as CapacitorApp } from '@capacitor/app';
 import { Capacitor } from "@capacitor/core";
 import { Browser } from "@capacitor/browser";
 import api from './api_instance';
-const config = require('./config.json');
-
 
 
 /* Core CSS required for Ionic components to work properly */
@@ -39,6 +37,12 @@ import './theme/variables.css';
 import './theme/tabs.css';
 import './theme/global.css';
 import './theme/utility.css';
+
+const config = require('./config.json');
+
+
+
+
 
 setupIonicReact();
 

@@ -9,9 +9,18 @@ import {
     IonRow,
     IonText,
     IonToolbar,
+    IonContent,
+    IonHeader,
+    IonTitle,
+    IonToast,
+    IonButtons,
+    IonBackButton,
+    IonFab,
+     IonFabButton,
     useIonActionSheet
 } from '@ionic/react';
 import api from '../../api_instance';
+import { add } from 'ionicons/icons';
 import classNames from 'classnames';
 import { addOutline, arrowBackOutline } from 'ionicons/icons';
 import React, { useRef, useState } from 'react';
@@ -37,6 +46,7 @@ const CloudManager: React.FC = () => {
     const filesDivRef = useRef<any>(null);
     const history = useHistory();
     const [ present ] = useIonActionSheet();
+    const [showToast, setShowToast] = React.useState(false);
 
     const handleNewDrive = () => {
         present({
@@ -55,6 +65,37 @@ const CloudManager: React.FC = () => {
             ],
         })
     }
+    const [showPopup, setShowPopup] = useState(false);
+
+    
+
+    const handleFloatingButtonClick = () => {
+      setShowPopup(true);
+    };
+  
+    const handlePopupClose = () => {
+      setShowPopup(false);
+    };
+  
+    const handleBackButtonClick = () => {
+      handlePopupClose();
+    };
+    
+    const handleFileUpload = () => {
+        setShowPopup(false);
+        setShowLoading(true);
+    
+        // Simulating an asynchronous upload process
+        setTimeout(() => {
+          setShowLoading(false);
+          setShowToast(true);
+        }, 2000);
+      };
+    
+      const handleToastClose = () => {
+        setShowToast(false);
+      };
+    
 
     const googleLogin = () => {
         if (drives.length === 5) {
@@ -228,7 +269,53 @@ const CloudManager: React.FC = () => {
                 )}
             </IonGrid>
 
+            {/* Floating button */}
+            <IonFab class="btn_ic">
+                <IonFabButton class="floating_button_btn" onClick={handleFloatingButtonClick}>
+                <IonIcon icon={add} class="floating_button_icon" />
+                </IonFabButton>
+            </IonFab>
+
+            <IonModal isOpen={showPopup} class="float_popup">
+            <IonHeader>
+        
+            <IonToolbar>
+                <IonButtons slot="start">
+                
+                </IonButtons>
+             
+                <IonButton expand="block" class="close_pop" onClick={handlePopupClose}>
+                x
+                
+            </IonButton>
+            
+            
+            </IonToolbar>
+            <h5 id="heading">Upload File</h5>
+            </IonHeader>
+            
+            
+            <IonContent>
+                
+            <div className="center-content">
+            <div className="center">
+                <input type="file" required/>
+            </div>
+            <div className="corner">
+                <IonButton onClick={handleFileUpload}>Submit</IonButton>
+            </div>
+            </div>
+        </IonContent>
+        </IonModal>
+
+
             <IonLoading message="Loading..." isOpen={showLoading} spinner="circles" />
+            <IonToast
+        isOpen={showToast}
+        message="Successfully uploaded!"
+        duration={2000}
+        onDidDismiss={handleToastClose}
+      />
         </IonPage>
     );
 };
