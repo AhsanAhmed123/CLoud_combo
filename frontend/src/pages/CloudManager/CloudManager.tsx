@@ -19,6 +19,7 @@ import {
      IonFabButton,
     useIonActionSheet
 } from '@ionic/react';
+import axios from 'axios';
 import api from '../../api_instance';
 import { add } from 'ionicons/icons';
 import classNames from 'classnames';
@@ -81,20 +82,44 @@ const CloudManager: React.FC = () => {
       handlePopupClose();
     };
     
-    const handleFileUpload = () => {
-        setShowPopup(false);
-        setShowLoading(true);
+    // const handleFileUpload = () => {
+    //     setShowPopup(false);
+    //     setShowLoading(true);
     
-        // Simulating an asynchronous upload process
-        setTimeout(() => {
-          setShowLoading(false);
-          setShowToast(true);
-        }, 2000);
-      };
+    //     // Simulating an asynchronous upload process
+    //     setTimeout(() => {
+    //       setShowLoading(false);
+    //       setShowToast(true);
+    //     }, 2000);
+    //   };
     
-      const handleToastClose = () => {
-        setShowToast(false);
-      };
+    //   const handleToastClose = () => {
+    //     setShowToast(false);
+    //   };
+
+const handleFileUpload = async () => {
+  setShowPopup(false);
+  setShowLoading(true);
+
+  try {
+    const formData = new FormData();
+    formData.append('file', selectedFile!);
+
+    // Make an API call to upload the file
+    await axios.post('https://example.com/api/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    setShowLoading(false);
+    setShowToast(true);
+  } catch (error) {
+    console.error('Error uploading file:', error);
+    setShowLoading(false);
+    setShowToast(true);
+  }
+};
     
 
     const googleLogin = () => {
@@ -105,7 +130,11 @@ const CloudManager: React.FC = () => {
 
         void startGoogleAuth();
     };
+    const handleToastClose = () => {
+        setShowToast(false);
+      };
 
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const dropboxLogin = async () => {
         if (drives.length === 5) {
             setShowLimitModal(true);
@@ -299,7 +328,8 @@ const CloudManager: React.FC = () => {
                 
             <div className="center-content">
             <div className="center">
-                <input type="file" required/>
+                <input type="file" required
+          onChange={(e) => setSelectedFile(e.target.files?.[0] || null)}/>
             </div>
             <div className="corner">
                 <IonButton onClick={handleFileUpload}>Submit</IonButton>
