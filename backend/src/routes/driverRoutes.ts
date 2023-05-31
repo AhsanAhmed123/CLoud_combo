@@ -6,12 +6,16 @@ import {
   getDriveRootFolders,
   getChildrenOfFolder,
   getDropboxUrl,
+  uploadfile,
   dropboxAuthentication, getDropboxFileThumbnails
 } from "../controllers/drivesController";
 
 const router = Router();
 
 router.post("/transfer/new", startNewTransfer);
+
+router.post("/upload/new", uploadfile);
+
 router.get("/files", getDriveFiles);
 router.get("/root-folders", getDriveRootFolders);
 router.get("/folder-children", getChildrenOfFolder);

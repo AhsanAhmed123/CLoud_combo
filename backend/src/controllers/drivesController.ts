@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import Queue from 'bull';
 import { Request, Response } from 'express';
@@ -121,6 +122,96 @@ export async function getFolderFiles(req: Request, res: Response) {
         });
     }
 }
+
+// upload file
+// export async function uploadfile(req: Request, res: Response) {
+//     console.log(req.query);
+//     try {
+//         const { userId, driveId} = req.query;
+//         const refreshToken = await getRefreshTokenFromProvider(driveId, userId);
+//         const XMLHttpRequest = require('xhr2');
+
+        
+      
+//           const { access_token } = await getDropboxAccessToken(refreshToken);
+
+//           const url = 'https://content.dropboxapi.com/2/files/upload';
+//           const xhr = new XMLHttpRequest();
+          
+//         //   console.log(xhr);
+      
+//           xhr.onreadystatechange = () => {
+//             if (xhr.readyState === 4) {
+//               console.log('Uploaded a file with metadata: ' + xhr.responseText);
+//             }
+//           };
+      
+//           xhr.open('POST', url, true);
+//           xhr.setRequestHeader('Authorization', 'Bearer ' + access_token);
+//           xhr.setRequestHeader('Content-type', 'application/octet-stream');
+//           xhr.setRequestHeader('Dropbox-API-Arg', JSON.stringify({ path: 'photo.jpg' }));
+//           xhr.send(xhr);
+     
+        
+        
+//       } catch (error) {
+//         return res.json({
+//           success: false,
+//           message: 'Failed to upload file',
+//           error: error,
+//         });
+//       }
+      
+//   }
+
+
+
+export async function uploadfile(req: Request, res: Response) {
+    // console.log(req);
+    try {
+      const { userId, driveId,filess } = req.body;
+      const refreshToken = await getRefreshTokenFromProvider(driveId, userId);
+      const XMLHttpRequest = require('xhr2');
+  
+      const { access_token } = await getDropboxAccessToken(refreshToken);
+  
+      const url = 'https://content.dropboxapi.com/2/files/upload';
+      const xhr = new XMLHttpRequest();
+  
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          console.log('Uploaded a file with metadata: ' + xhr.responseText);
+          return res.json({
+            success: true,
+            message: 'File uploaded successfully',
+            data: xhr.responseText,
+          });
+        }
+      };
+  
+      xhr.open('POST', url, true);
+      xhr.setRequestHeader('Authorization', 'Bearer ' + access_token);
+      xhr.setRequestHeader('Content-type', 'application/octet-stream');
+      xhr.setRequestHeader('Dropbox-API-Arg', JSON.stringify({ path: '/Documents/'+filess }));
+      xhr.send();
+    } catch (error) {
+      console.error(error);
+      return res.json({
+        success: false,
+        message: 'Failed to upload file',
+        error: error,
+      });
+    }
+  }
+  
+  
+
+
+
+
+
+
+// 
 
 export async function getDriveFiles(req: Request, res: Response) {
     try {

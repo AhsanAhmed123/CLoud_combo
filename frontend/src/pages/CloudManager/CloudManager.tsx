@@ -3,7 +3,7 @@ import {
     IonCol,
     IonGrid,
     IonIcon, IonInput,
-    IonLabel, IonLoading,
+    IonLabel,
     IonModal,
     IonPage,
     IonRow,
@@ -12,7 +12,6 @@ import {
     IonContent,
     IonHeader,
     IonTitle,
-    IonToast,
     IonButtons,
     IonBackButton,
     IonFab,
@@ -33,6 +32,7 @@ import drive from '../../assets/svgs/drive.svg';
 import dropbox from '../../assets/svgs/dropbox.svg';
 import './CloudManager.css';
 import { Browser } from "@capacitor/browser";
+import { IonLoading, IonToast } from '@ionic/react';
 
 const CloudManager: React.FC = () => {
     const dispatch = useDispatch();
@@ -48,6 +48,8 @@ const CloudManager: React.FC = () => {
     const history = useHistory();
     const [ present ] = useIonActionSheet();
     const [showToast, setShowToast] = React.useState(false);
+    const { authedDrives } = useSelector((state: any) => state.drives);
+    
 
     const handleNewDrive = () => {
         present({
@@ -68,11 +70,85 @@ const CloudManager: React.FC = () => {
     }
     const [showPopup, setShowPopup] = useState(false);
 
-    
+    let fileInput: HTMLInputElement | null = null;
 
-    const handleFloatingButtonClick = () => {
-      setShowPopup(true);
-    };
+    const uploadFiles = async (files: any[]) => {
+        // const formData = new FormData();
+        // files.forEach((file, index) => {
+        //   formData.append(`file${index}`, file);
+        // });
+        // console.log();
+        
+        var filess=files[0].name
+      
+        // Make the API call using your preferred method (e.g., fetch, axios)
+        const driveId = authedDrives.find((drive: any) => drive.provider_user_id === selectedDriveId)?.provider_user_id;
+        const currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+        const userId = currentUser?.id;
+
+        if (!filess || !driveId || !userId) {
+            // Handle the case when any of the required parameters is missing
+            console.error('Missing required parameters');
+            // You may choose to return or throw an error here, or perform any other appropriate error handling
+          } else {
+            const response = await api.post('drive/upload/new', {
+              filess,
+              driveId,
+              userId
+            });
+            // Handle the response or perform any other desired actions
+          }
+       
+        // setShowLoading(true);
+        setShowToast(true);
+          
+          
+      
+        if (!Response) {
+        
+          throw new Error('API request');
+        }
+      
+        return Response;
+      };
+
+
+const handleFloatingButtonClick = async () => {
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = '*'; // Specify the accepted file types if needed
+  fileInput.multiple = true; // Allow selecting multiple files if needed
+
+  fileInput.addEventListener('change', async (event) => {
+    if (event.target instanceof HTMLInputElement && event.target.files) {
+      const selectedFiles = Array.from(event.target.files);
+
+    //   console.log(selectedFiles);
+    //   /upload/new
+
+    try {
+        const response = await uploadFiles(selectedFiles);
+        console.log(response); // Handle the API response
+      } catch (error) {
+        console.error(error); // Handle any errors that occur during the API call
+      }
+
+
+      // Clear the file input element
+      if (fileInput) {
+        fileInput.value = '';
+      }
+
+
+    }
+  });
+
+  fileInput.click();
+};
+
+      
+
+
   
     const handlePopupClose = () => {
       setShowPopup(false);
@@ -82,44 +158,7 @@ const CloudManager: React.FC = () => {
       handlePopupClose();
     };
     
-    // const handleFileUpload = () => {
-    //     setShowPopup(false);
-    //     setShowLoading(true);
-    
-    //     // Simulating an asynchronous upload process
-    //     setTimeout(() => {
-    //       setShowLoading(false);
-    //       setShowToast(true);
-    //     }, 2000);
-    //   };
-    
-    //   const handleToastClose = () => {
-    //     setShowToast(false);
-    //   };
 
-const handleFileUpload = async () => {
-  setShowPopup(false);
-  setShowLoading(true);
-
-  try {
-    const formData = new FormData();
-    formData.append('file', selectedFile!);
-
-    // Make an API call to upload the file
-    await axios.post('https://example.com/api/upload', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-
-    setShowLoading(false);
-    setShowToast(true);
-  } catch (error) {
-    console.error('Error uploading file:', error);
-    setShowLoading(false);
-    setShowToast(true);
-  }
-};
     
 
     const googleLogin = () => {
@@ -130,10 +169,24 @@ const handleFileUpload = async () => {
 
         void startGoogleAuth();
     };
-    const handleToastClose = () => {
+
+    
+
+      const handleFileUpload =  async () => {
+        // alert("SA");
+        setShowPopup(false);
+        setShowLoading(true);
+      
+        // Simulating an asynchronous upload process
+        setTimeout(() => {
+          setShowLoading(false);
+          setShowToast(true);
+        }, 2000);
+      };
+      
+      const handleToastClose = () => {
         setShowToast(false);
       };
-
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const dropboxLogin = async () => {
         if (drives.length === 5) {
@@ -346,6 +399,24 @@ const handleFileUpload = async () => {
         duration={2000}
         onDidDismiss={handleToastClose}
       />
+
+        <IonLoading
+        message="Uploading..."
+        isOpen={showLoading}
+        spinner="circles"
+        />
+
+        <IonToast
+        isOpen={showToast}
+        message="Successfully uploaded!"
+        duration={2000}
+        onDidDismiss={handleToastClose}
+        />
+
+
+
+
+
         </IonPage>
     );
 };
